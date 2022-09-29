@@ -1,22 +1,22 @@
-import React, { Fragment } from 'react'
-import styles from "./Header.module.css"
-import imageMain from "../assets/main_photo.jpg"
-import HeaderCartButton from './HeaderCartButton'
+import React, { Fragment } from 'react';
+import styles from './Header.module.css';
+import imageMain from '../assets/main_photo.jpg';
+import HeaderCartButton from './HeaderCartButton';
 
-const Header = props => {
+const Header = ({ onShowCart }) => {
   return (
     <Fragment>
       <header className={styles.header}>
-        <h1><span className={styles.logoFoody}>Foody</span>App</h1>
-        <HeaderCartButton/>
+        <h1>
+          <span className={styles.logoFoody}>Foody</span>App
+        </h1>
+        <HeaderCartButton onClick={onShowCart} />
       </header>
       <div className={styles['main-image']}>
-        <img src={imageMain} alt="delicious_food" />
+        <img src={imageMain} alt='delicious_food' />
       </div>
     </Fragment>
-  )
-}
-
-
+  );
+};
 
 export default Header;
