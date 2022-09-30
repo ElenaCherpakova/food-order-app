@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styles from './Header.module.css';
-import imageMain from '../assets/main_photo.jpg';
+import imageMain from '../assets/mainPhoto.jpg';
 import HeaderCartButton from './HeaderCartButton';
 
 const Header = ({ onShowCart }) => {
