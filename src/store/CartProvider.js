@@ -8,6 +8,7 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
+    // avoding mutation a current array to add a new item to the cart list using concat method in order to generate a brand new array
     const updatedItems = state.items.concat(action.item);
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
