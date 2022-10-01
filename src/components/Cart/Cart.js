@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Modal from '../UI/Modal';
 import styles from './Cart.module.css';
+import CartContext from '../../store/cart-context';
 
 const Cart = ({ onClose }) => {
+  const cartCtx = useContext(CartContext);
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+
+  const hasItems = cartCtx.items.length > 0;
+
   const cartItems = (
     <ul className={styles['cart-items']}>
-      {[{ id: 'a1', name: 'sushi', amount: 2, price: 9.99 }].map((item) => (
+      {cartCtx.items.map((item) => (
         <li>{item.name}</li>
       ))}
     </ul>
@@ -16,13 +22,13 @@ const Cart = ({ onClose }) => {
       {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
-        <span>66.80</span>
+        <span>{totalAmount}</span>
       </div>
       <div className={styles.actions}>
         <button onClick={onClose} className={styles['button--alt']}>
           Close
         </button>
-        <button className={styles.button}>Order</button>
+        {hasItems && <button className={styles.button}>Order</button>}
       </div>
     </Modal>
   );
