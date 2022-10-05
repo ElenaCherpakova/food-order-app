@@ -2,5 +2,5 @@
 
 Practice Project: Learning React
 
-# Technologies 
+## Technologies 
  - React
