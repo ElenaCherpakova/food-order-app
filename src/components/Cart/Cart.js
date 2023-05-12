@@ -23,6 +23,20 @@ const Cart = ({ onClose }) => {
   const orderHandler = () => {
     setIsCheckout(true);
   };
+
+  const submitOrderHandler = (userData) => {
+    fetch('https://foodyapp-44e91-default-rtdb.firebaseio.com/orders.json', {
+      method: 'POST',
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCtx.items,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
   const cartItems = (
     <ul className={styles['cart-items']}>
       {cartCtx.items.map((item) => (
@@ -57,7 +71,7 @@ const Cart = ({ onClose }) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={onClose}/>}
+      {isCheckout && <Checkout onConfirm={submitOrderHandler} onCancel={onClose} />}
       {!isCheckout && modalActions}
     </Modal>
   );
