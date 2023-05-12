@@ -1,6 +1,6 @@
 # Food Order App
 
-Practice Project: Learning React
+Learning React
 
 ## Technologies 
  - React
